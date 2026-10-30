@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1a100b">
+<title>Growth</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--text:#f6e7d0;--muted:#b9a082;--card:rgba(255,226,180,.07);--line:rgba(255,214,160,.16);--glow:#f2b56b;--serif:'Cormorant Garamond',Georgia,serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%}
+body{font-family:'Nunito',system-ui,sans-serif;color:var(--text);line-height:1.5;background:radial-gradient(ellipse 120% 70% at 50% -10%,#5c3718 0%,#2b180d 50%,#140a06 100%) fixed;padding:env(safe-area-inset-top) 0 calc(88px + env(safe-area-inset-bottom))}
+h1{font-family:var(--serif);font-weight:500;font-size:30px;margin:0;text-align:center;flex:1;line-height:1.2;text-transform:capitalize}
+h2{font-family:var(--serif);font-weight:500;font-size:22px;margin:30px 0 10px;color:var(--muted)}
+.wrap{max-width:560px;margin:0 auto;padding:20px 18px}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+main{animation:rise .6s ease}
+.nav{display:flex;align-items:center;gap:8px;margin-bottom:18px}
+.arrow{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:24px;line-height:1;transition:all .3s}
+.arrow:active{background:rgba(242,181,107,.25)}
+.track{height:6px;border-radius:9px;background:rgba(255,220,170,.12);overflow:hidden}
+.fill{height:100%;border-radius:9px;background:linear-gradient(90deg,#e8896a,#f2b56b,#ffe3a0);box-shadow:0 0 12px #f2b56b88;transition:width .7s ease}
+.cnt{font-size:14px;color:var(--muted);margin:8px 0 0}
+.cat{display:flex;align-items:center;gap:9px;margin:24px 0 10px;font-family:var(--serif);font-size:21px}
+.dot{width:9px;height:9px;border-radius:50%;box-shadow:0 0 9px currentColor}
+.item{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);color:var(--text);padding:14px 16px;border-radius:16px;margin-bottom:8px;font:inherit;font-size:16px;transition:background .5s ease,border-color .5s ease,box-shadow .5s ease}
+.item.on{background:linear-gradient(135deg,rgba(242,181,107,.22),rgba(232,137,106,.12));border-color:rgba(242,181,107,.45);box-shadow:0 0 24px rgba(242,181,107,.14)}
+.t{flex:1;transition:opacity .5s}
+.on .t{opacity:.6;text-decoration:line-through;text-decoration-color:rgba(255,220,170,.4)}
+.ck{width:24px;height:24px;border-radius:50%;border:2px solid var(--muted);flex:none;display:grid;place-items:center;transition:all .5s ease}
+.ck:after{content:'';width:6px;height:11px;border:solid #3a2010;border-width:0 2px 2px 0;transform:rotate(45deg) scale(0) translate(-1px,-1px);transition:transform .4s ease}
+.on .ck{background:radial-gradient(circle,#ffe3a0,#f2b56b);border-color:#f2b56b;box-shadow:0 0 14px #f2b56b}
+.on .ck:after{transform:rotate(45deg) scale(1) translate(-1px,-1px)}
+.empty{text-align:center;color:var(--muted);padding:48px 10px;font-style:italic;font-family:var(--serif);font-size:22px;line-height:1.4}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:18px}
+input,select{background:rgba(255,220,170,.08);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:12px;font:inherit;width:100%;outline:none;transition:border-color .3s,box-shadow .3s}
+input:focus,select:focus{border-color:var(--glow);box-shadow:0 0 12px rgba(242,181,107,.25)}
+option{color:#222}
+.row{display:flex;gap:8px;margin:8px 0}
+.btn{background:linear-gradient(135deg,#f2b56b,#e8896a);color:#2a140a;border:0;border-radius:12px;padding:12px 18px;font:inherit;font-weight:600;width:100%;transition:filter .3s}
+.btn:active{filter:brightness(.9)}
+.btn.s{width:auto;flex:none}
+.btn.g{background:var(--card);color:var(--text);border:1px solid var(--line);flex:1;width:auto}
+.goal{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid var(--line)}
+.goal .t{opacity:1}
+.goal small{color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:6px 6px 6px 14px;border-radius:99px;border:1px solid var(--line);background:var(--card);margin:0 6px 8px 0}
+.x{background:none;border:0;color:var(--muted);font-size:20px;line-height:1;padding:2px 8px}
+.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:6px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(22,12,7,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.tab{flex:1;max-width:170px;padding:12px;border-radius:14px;border:0;background:none;color:var(--muted);font:inherit;font-weight:600;transition:all .4s ease}
+.tab.act{color:#2a140a;background:linear-gradient(135deg,#f2b56b,#e8896a);box-shadow:0 0 18px rgba(242,181,107,.3)}
+#splash{position:fixed;inset:0;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;background:radial-gradient(ellipse at 50% 42%,#4d2c15,#140a06 75%);transition:opacity 1.3s ease,visibility 1.3s}
+#splash.out{opacity:0;visibility:hidden}
+#splash p{font-family:var(--serif);font-style:italic;font-size:30px;margin:0;padding:0 30px;text-align:center;opacity:0;animation:fadein 1.8s .5s forwards}
+@keyframes fadein{to{opacity:1}}
+.flame{width:44px;height:76px;border-radius:50% 50% 50% 50%/68% 68% 32% 32%;background:radial-gradient(ellipse at 50% 80%,#fff3c4 0%,#ffc56b 35%,#e8761f 78%);box-shadow:0 0 70px 24px rgba(242,150,60,.42);transform-origin:50% 100%;animation:fl 2.4s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:scale(1,1) rotate(-1deg)}50%{transform:scale(.94,1.07) rotate(1.5deg)}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<div id="splash"><div class="flame"></div><p>do it for your own growth</p></div>
+<div class="wrap"><main id="main"></main></div>
+<nav class="tabs">
+<button class="tab" data-v="today">Heute</button>
+<button class="tab" data-v="month">Monat</button>
+<button class="tab" data-v="goals">Ziele</button>
+</nav>
+<input type="file" id="imp" accept=".json" hidden>
+<script>
+const K='growth-habits-v1';
+let S=null;
+try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
+S=S||{cats:[{id:'c1',name:'Körper'},{id:'c2',name:'Geist'},{id:'c3',name:'Alltag'}],goals:[],done:{}};
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const P=['#f2b56b','#e8896a','#c9a0dc','#9cc5a1','#e6d28f','#d98fa6'];
+const pad=n=>String(n).padStart(2,'0');
+const dk=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const mk=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}`;
+const uid=()=>Math.random().toString(36).slice(2,9);
+const col=id=>{const i=S.cats.findIndex(c=>c.id===id);return i<0?'#b9a082':P[i%P.length]};
+const isOn=(k,id)=>(S.done[k]||[]).includes(id);
+let view='today',cur=new Date();cur.setHours(12);
+
+function checklist(type,k){
+  const gs=S.goals.filter(g=>g.type===type);
+  if(!gs.length)return `<div class="empty">Noch keine ${type==='d'?'täglichen':'monatlichen'} Ziele.<br>Lege sie unter „Ziele“ an.</div>`;
+  const n=gs.filter(g=>isOn(k,g.id)).length;
+  let h=`<div class="track"><div class="fill" style="width:${n/gs.length*100}%"></div></div><div class="cnt">${n} von ${gs.length} erledigt</div>`;
+  for(const [cid,name] of [...S.cats.map(c=>[c.id,c.name]),['','Ohne Kategorie']]){
+    const l=gs.filter(g=>(g.cat||'')===cid);
+    if(!l.length)continue;
+    h+=`<div class="cat" style="color:${col(cid)}"><span class="dot" style="background:${col(cid)}"></span>${esc(name)}</div>`;
+    for(const g of l)h+=`<button class="item ${isOn(k,g.id)?'on':''}" data-a="tg" data-id="${g.id}"><span class="ck"></span><span class="t">${esc(g.name)}</span></button>`;
+  }
+  return h;
+}
+
+function goalsView(){
+  const co=S.cats.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');
+  let h=`<h1>Ziele</h1>
+  <div class="card"><input id="gn" placeholder="Neues Ziel, z. B. 30 Min. Training" maxlength="80">
+  <div class="row"><select id="gc"><option value="">Ohne Kategorie</option>${co}</select><select id="gt"><option value="d">Täglich</option><option value="m">Monatlich</option></select></div>
+  <button class="btn" data-a="ag">Ziel hinzufügen</button></div>`;
+  for(const [t,label] of [['d','Täglich'],['m','Monatlich']]){
+    const l=S.goals.filter(g=>g.type===t);
+    if(!l.length)continue;
+    h+=`<h2>${label}</h2>`+l.map(g=>{const c=S.cats.find(c=>c.id===g.cat);
+      return `<div class="goal"><span class="dot" style="background:${col(g.cat)};color:${col(g.cat)}"></span><span class="t">${esc(g.name)}<br><small>${c?esc(c.name):'Ohne Kategorie'}</small></span><button class="x" data-a="dg" data-id="${g.id}" aria-label="Löschen">×</button></div>`}).join('');
+  }
+  h+=`<h2>Kategorien</h2><div class="card"><div class="row"><input id="cn" placeholder="Neue Kategorie" maxlength="30"><button class="btn s" data-a="ac">Hinzufügen</button></div>
+  <div>${S.cats.map(c=>`<span class="chip"><span class="dot" style="background:${col(c.id)};color:${col(c.id)}"></span>${esc(c.name)}<button class="x" data-a="dc" data-id="${c.id}" aria-label="Löschen">×</button></span>`).join('')}</div></div>
+  <h2>Sicherung</h2><div class="row"><button class="btn g" data-a="ex">Exportieren</button><button class="btn g" data-a="im">Importieren</button></div>`;
+  return h;
+}
+
+function render(){
+  let h;
+  if(view==='goals')h=goalsView();
+  else{
+    const t=view==='today';
+    const lbl=t?cur.toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'}):cur.toLocaleDateString('de-DE',{month:'long',year:'numeric'});
+    h=`<div class="nav"><button class="arrow" data-a="pv" aria-label="Zurück">‹</button><h1>${lbl}</h1><button class="arrow" data-a="nx" aria-label="Weiter">›</button></div>`+checklist(t?'d':'m',t?dk(cur):mk(cur));
+  }
+  $('#main').innerHTML=h;
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('act',b.dataset.v===view));
+}
+function step(x){if(view==='today')cur.setDate(cur.getDate()+x);else{cur.setDate(1);cur.setMonth(cur.getMonth()+x)}}
+function prog(){const all=document.querySelectorAll('.item').length,n=document.querySelectorAll('.item.on').length;
+  const f=$('.fill');if(f)f.style.width=(n/all*100)+'%';const c=$('.cnt');if(c)c.textContent=`${n} von ${all} erledigt`}
+
+document.addEventListener('click',e=>{
+  const v=e.target.closest('[data-v]');
+  if(v){view=v.dataset.v;cur=new Date();cur.setHours(12);return render()}
+  const b=e.target.closest('[data-a]');if(!b)return;
+  const a=b.dataset.a,id=b.dataset.id;
+  if(a==='tg'){
+    const k=view==='today'?dk(cur):mk(cur),l=S.done[k]=S.done[k]||[],i=l.indexOf(id);
+    i<0?l.push(id):l.splice(i,1);save();b.classList.toggle('on');prog();
+  }else if(a==='pv'||a==='nx'){step(a==='pv'?-1:1);render()}
+  else if(a==='ag'){const n=$('#gn').value.trim();if(!n){$('#gn').focus();return}
+    S.goals.push({id:uid(),name:n,cat:$('#gc').value,type:$('#gt').value});save();render()}
+  else if(a==='dg'){if(confirm('Ziel löschen?')){S.goals=S.goals.filter(g=>g.id!==id);save();render()}}
+  else if(a==='ac'){const n=$('#cn').value.trim();if(!n){$('#cn').focus();return}
+    S.cats.push({id:uid(),name:n});save();render()}
+  else if(a==='dc'){if(confirm('Kategorie löschen? Die Ziele bleiben erhalten.')){S.cats=S.cats.filter(c=>c.id!==id);S.goals.forEach(g=>{if(g.cat===id)g.cat=''});save();render()}}
+  else if(a==='ex'){const u=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:'application/json'})),x=document.createElement('a');
+    x.href=u;x.download='growth-backup.json';x.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+  else if(a==='im')$('#imp').click();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.tagName==='INPUT'){const c=e.target.closest('.card'),b=c&&c.querySelector('.btn');if(b)b.click()}
+});
+$('#imp').addEventListener('change',e=>{
+  const f=e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{try{const o=JSON.parse(r.result);if(Array.isArray(o.cats)&&Array.isArray(o.goals)&&o.done){S=o;save();render()}else alert('Ungültige Sicherungsdatei.')}catch(x){alert('Ungültige Sicherungsdatei.')}};
+  r.readAsText(f);e.target.value='';
+});
+
+render();
+setTimeout(()=>$('#splash').classList.add('out'),3000);
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body>
+</html>
